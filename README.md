@@ -1,7 +1,9 @@
 # Show, Translate and Tell
 
+This repo contains code for training and evaluation of a multi-task model which performs image captioning, cross modal retrieval and sentence paraphrasing. 
 The proposed architecture is as shown in the figure
 ![Alt text](figures/stt.PNG?raw=true)
+
 ## Generate Data
 In the data folder, you can find scripts for generating TF-records for mscoco dataset.
 Checkout command line arguments in the scripts for setting paths
@@ -14,10 +16,21 @@ Args:
 
 * Generate TF-records with Image, predicted caption and groundtruth caption
 ```
-mv captioning/new_captions/ic_coco_stt_para-att_12001.txt /shared/kgcoe-research/mil/cvs_cvpr18/coco/
 
 python -m data.coco_data_loader --precompute \
                                 --record_path /shared/kgcoe-research/mil/cvs_cvpr18/para_att_pred.tfrecord \
                                 --feature_path /shared/kgcoe-research/mil/peri/scan_data/data/coco_precomp/testall_ims.npy \
                                 --captions_path /shared/kgcoe-research/mil/cvs_cvpr18/coco/
+```
+
+## Training on COCO dataset
+
+```
+sh scripts/train_coco.sh
+```
+
+## Evaluation on COCO dataset
+
+```
+sh scripts/eval_coco.sh
 ```
