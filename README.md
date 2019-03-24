@@ -1,6 +1,7 @@
 # Show, Translate and Tell
 
 This repo contains code for training and evaluation of a multi-task model which performs image captioning, cross modal retrieval and sentence paraphrasing. 
+The paper and results can be found at <a href="https://arxiv.org/abs/1903.06275"> Show, Translate and Tell </a>
 The proposed architecture is as shown in the figure
 ![Alt text](figures/stt.PNG?raw=true)
 
@@ -33,4 +34,15 @@ sh scripts/train_coco.sh
 
 ```
 sh scripts/eval_coco.sh
+```
+
+If you find this research or codebase useful in your experiments, consider citing
+
+```
+@article{stt2019,
+  title={Show, Translate and Tell},
+  author={Peri, Dheeraj and Sah, Shagan and Ptucha, Raymond},
+  journal={arXiv preprint arXiv:1903.06275},
+  year={2019}
+}
 ```
