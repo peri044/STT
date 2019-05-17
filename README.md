@@ -1,7 +1,7 @@
 # Show, Translate and Tell
 
-This repo contains code for training and evaluation of a multi-task model which performs image captioning, cross modal retrieval and sentence paraphrasing. 
-The paper and results can be found at <a href="https://arxiv.org/abs/1903.06275"> Show, Translate and Tell </a>
+This repo contains code for training and evaluation of a multi-task model which performs image captioning, cross modal retrieval and sentence paraphrasing.
+The paper and results can be found at <a href="https://arxiv.org/abs/1903.06275"> Show, Translate and Tell </a>. This work has been accepted at <a href="http://2019.ieeeicip.org/index.php"> ICIP 2019 </a>.
 The proposed architecture is as shown in the figure
 ![Alt text](figures/stt.PNG?raw=true)
 
@@ -19,9 +19,9 @@ Args:
 ```
 
 python -m data.coco_data_loader --precompute \
-                                --record_path /shared/kgcoe-research/mil/cvs_cvpr18/para_att_pred.tfrecord \
-                                --feature_path /shared/kgcoe-research/mil/peri/scan_data/data/coco_precomp/testall_ims.npy \
-                                --captions_path /shared/kgcoe-research/mil/cvs_cvpr18/coco/
+                                --record_path para_att_pred.tfrecord \
+                                --feature_path coco_precomp/testall_ims.npy \
+                                --captions_path <path_to_coco_captions>
 ```
 
 ## Training on COCO dataset
