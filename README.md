@@ -7,6 +7,8 @@ The proposed architecture is as shown in the figure
 
 ## Generate Data
 In the data folder, you can find scripts for generating TF-records for mscoco dataset.
+Update (7/31/2019): `prepare_mscoco_pairs.py` is added to the repo. This can be used as a reference to generate `training_enc.txt` and `training_dec.txt` which are basically paraphrases.
+Using 5 captions, it creates 20 permutations of paraphrases and writes them in the TF record along with the associated image. This script is not cleaned up and should only be used for reference (it might not be the final script that we used).
 Checkout command line arguments in the scripts for setting paths
 * To generate TF-records for MSCOCO
 ```
