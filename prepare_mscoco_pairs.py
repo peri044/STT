@@ -13,17 +13,18 @@ import scipy
 from progressbar import ProgressBar
 pbar = ProgressBar()
 
-root_path = 'cvs/mscoco/'
+root_path = '../'
 
-captions = json.load(open(os.path.join(root_path, 'sentences_train2014.json'),'r'))
+captions = json.load(open(os.path.join(root_path, 'captions_train2014.json'),'r'))
+
 image_ids = [x['id'] for x in captions['images']]
 image_captions = {}
-for sent in pbar(captions['sentences']):
-    cur_caption = ''.join([i if ord(i) < 128 else ' ' for i in sent['sentence']])
-    if sent['image_id'] in image_captions.keys():
-        image_captions[sent['image_id']].append(cur_caption.lower().strip().replace(',','').replace('.','').replace(';',''))
+for data_point in pbar(captions['annotations']):
+    cur_caption = ''.join([i if ord(i) < 128 else ' ' for i in data_point['caption']])
+    if data_point['image_id'] in image_captions.keys():
+        image_captions[data_point['image_id']].append(cur_caption.lower().strip().replace(',','').replace('.','').replace(';',''))
     else:
-        image_captions[sent['image_id']] = [cur_caption.lower().strip().replace(',','').replace('.','').replace(';','')]
+        image_captions[data_point['image_id']] = [cur_caption.lower().strip().replace(',','').replace('.','').replace(';','')]
 
 all_captions = []
 for id in image_ids:
@@ -34,8 +35,8 @@ for id in image_ids:
 
 all_data = []
 for x in range(0,len(all_captions)):
-    sentence_combinations = list(itertools.permutations(all_captions[x][0],2))
-    for combinations in sentence_combinations:
+    sent_combinations = list(itertools.permutations(all_captions[x][0],2))
+    for combinations in sent_combinations:
         all_data.append((combinations, all_captions[x][1])) # 770876, 1574722
 
 shuffle(all_data)
